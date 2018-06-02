@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     can :dashboard, :all
-        can :access, :rails_admin
+    can :access, :rails_admin
     if user.admin?
       can :manage, :all
     elsif user.physician?
