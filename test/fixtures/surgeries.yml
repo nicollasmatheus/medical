@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient: one
+  doctor: one
+  insurance: one
+  patient_treatment: one
+  reason: MyText
+  scheduling: 2018-06-02
+
+two:
+  patient: two
+  doctor: two
+  insurance: two
+  patient_treatment: two
+  reason: MyText
+  scheduling: 2018-06-02
