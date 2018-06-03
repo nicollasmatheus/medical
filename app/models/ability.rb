@@ -8,6 +8,8 @@ class Ability
       can :manage, :all
     elsif user.physician?
       can :manage, PatientTreatment
+      can :manage, Exam
+      can :read, Material
       can :read, Internment
       can :read, Surgery
       can :read, Doctor
@@ -16,6 +18,8 @@ class Ability
       can :manage, Internment
       can :manage, Surgery
       can :manage, Insurance
+      can :manage, Exam
+      can :read, Material
       can :read, Doctor
     end
   end

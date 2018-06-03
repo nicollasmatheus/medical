@@ -1,6 +1,15 @@
 RailsAdmin.config do |config|
 
+
   ### Popular gems integration
+
+  config.main_app_name =["Unimedical Management", ""]
+
+  config.navigation_static_links = {
+    'Desenvolvedor' => 'https://github.com/nicollasmatheus'
+  }
+
+  config.navigation_static_label = "Links Uteis"
 
   ## == Devise ==
    config.authenticate_with do
@@ -33,6 +42,11 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
+
+
+    config.model Doctor do
+      navigation_icon 'fas fa-capsules'
+    end
 
     ## With an audit adapter, you can add:
     # history_index

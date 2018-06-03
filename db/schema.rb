@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_02_053128) do
+ActiveRecord::Schema.define(version: 2018_06_02_182740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,21 @@ ActiveRecord::Schema.define(version: 2018_06_02_053128) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "exams", force: :cascade do |t|
+    t.bigint "patient_id"
+    t.bigint "doctor_id"
+    t.bigint "patient_treatment_id"
+    t.text "reason_exam"
+    t.integer "payment"
+    t.bigint "insurance_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_exams_on_doctor_id"
+    t.index ["insurance_id"], name: "index_exams_on_insurance_id"
+    t.index ["patient_id"], name: "index_exams_on_patient_id"
+    t.index ["patient_treatment_id"], name: "index_exams_on_patient_treatment_id"
+  end
+
   create_table "insurances", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -67,6 +82,12 @@ ActiveRecord::Schema.define(version: 2018_06_02_053128) do
     t.index ["insurance_id"], name: "index_internments_on_insurance_id"
     t.index ["patient_id"], name: "index_internments_on_patient_id"
     t.index ["patient_treatment_id"], name: "index_internments_on_patient_treatment_id"
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "patient_treatments", force: :cascade do |t|
@@ -129,6 +150,10 @@ ActiveRecord::Schema.define(version: 2018_06_02_053128) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "exams", "doctors"
+  add_foreign_key "exams", "insurances"
+  add_foreign_key "exams", "patient_treatments"
+  add_foreign_key "exams", "patients"
   add_foreign_key "internments", "doctors"
   add_foreign_key "internments", "insurances"
   add_foreign_key "internments", "patient_treatments"
