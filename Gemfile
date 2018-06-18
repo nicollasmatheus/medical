@@ -5,6 +5,7 @@ ruby '2.5.1'
 
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick', '~> 4.3'
+gem 'randomid'
 
 gem 'devise'
 gem 'cancancan'
